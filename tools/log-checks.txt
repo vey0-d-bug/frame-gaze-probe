@@ -1,0 +1,20 @@
+# Log checks for tools/unworn-suite.txt (the gaze probe, run P0): each line
+# is a regex the run's log must (log) or must not (nolog) contain. Unworn with
+# the sensor covered: the extension is enabled, the flag read, the action
+# bound and the gaze read every frame with no error; the action is expected
+# inactive and nothing is measured. Whether the eyes ever track is run P1's
+# business (worn, tools/worn-run.md).
+- mark=probe log gaze: XR_EXT_eye_gaze_interaction v\d+ offered, enabled \(--gaze-probe\)
+- mark=probe log gaze: supportsEyeGazeInteraction (true|false)
+- mark=probe log gaze: pose action bound on /interaction_profiles/ext/eye_gaze_interaction
+- mark=probe log gaze: /user/eyes_ext profile: (none|/interaction_profiles/ext/eye_gaze_interaction)
+- mark=probe log gaze probe: on \(--gaze-probe\); extension enabled
+- mark=probe log gaze probe: 5 dots \(centre, 10 deg left and right, 8 deg up and down\)
+- mark=probe log gaze probe: intro at
+- mark=probe log gaze probe: rounds at
+- mark=probe log gaze: \[rounds 1/3 dot centre\] \d+ frames: focus \d+, active \d+, ray valid \d+
+- mark=probe log gaze probe: one row a frame in .*-gaze\.tsv
+- mark=probe nolog gaze: reading the gaze pose failed
+- mark=probe nolog gaze: cannot create the gaze action
+- mark=probe nolog gaze: no action space for the gaze pose
+- mark=probe nolog gaze: pose action NOT bound

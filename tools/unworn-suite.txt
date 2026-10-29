@@ -1,0 +1,9 @@
+# The eye gaze probe unworn (run P0): XR_EXT_eye_gaze_interaction enabled,
+# supportsEyeGazeInteraction logged, the gaze pose action bound on the
+# extension's profile, the profile for /user/eyes_ext, and the gaze read every
+# frame with nobody in front of the eye cameras (expected: the action
+# inactive, the location flags 0). The probe's card (five dots) is on the
+# menu panel and captured at 20 s; the sequence runs its intro and the first
+# rounds, nothing measured. One run, about 75 s, started over ssh by a test
+# harness. Unworn, the proximity sensor COVERED, no file.
+75 - --settings none --no-auto-pause --gaze-probe --test-script 20:capture=hud-gazecard,70:mark=probe
